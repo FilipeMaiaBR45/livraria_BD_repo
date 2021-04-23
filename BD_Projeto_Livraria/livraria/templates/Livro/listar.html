@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Listar livros
+{% endblock %}
+
+{% block titulo_pagina %}
+Livros
+{% endblock %}
+
+{% block conteudo %}
+  {% if messages %}
+      <ul>
+          {% for message in messages %}
+              <li class="alert alert-warning">{{ message }}</li>
+          {% endfor %}
+      </ul>
+  {% endif %}
+
+  {% if livros %}
+    <ul class="list-group div35">
+      {% for livro in livros %}
+      <li class="list-group-item">
+        <strong>{{livro.id}}: {{ livro.titulo }} - R${{ livro.preco }}</strong>
+        <span class="span">
+          <a href="{% url 'livro:editar' pk=livro.id %}" class="mx-2" style="text-decoration:none; text-align: end;">
+            <i class="fas fa-pencil" style="color:#F2BE24"></i>
+          </a>
+          <a href="{% url 'livro:deletar' pk=livro.id %}" class="mx-2" style="text-decoration:none; text-align: end;">
+            <i class="fas fa-trash" style="color: var(--main-red)"></i>
+          </a>
+        </span>
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+  <p>Não há produtos cadastrados.</p>
+  {% endif %}
+{% endblock %}

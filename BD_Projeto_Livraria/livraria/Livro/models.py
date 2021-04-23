@@ -2,11 +2,15 @@ from django.db import models
 
 # Create your models here.
 
-
+from Funcionario.models import Funcionario
 class Livro(models.Model):
-    titulo = models.CharField(max_length=45, null=False)
-    autor = models.CharField(max_length=45, null=False)
-    editora = models.CharField(max_length=45, null=False)
-    ano = models.PositiveIntegerField(default = 0)
-    #status models.PositiveIntegerField(default = 0)
-    preco = models.DecimalField(max_digits=10, decimal_places=2)
+     objects = models.Manager()
+     titulo = models.CharField(max_length=45)
+     autor = models.CharField(max_length=45)
+     editora = models.CharField(max_length=45)
+     ano = models.IntegerField()
+     preco = models.IntegerField()
+     quantidade = models.IntegerField(default=0)
+     funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
+     
+      
