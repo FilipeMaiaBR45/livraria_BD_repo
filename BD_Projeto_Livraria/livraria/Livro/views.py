@@ -3,6 +3,10 @@ from django.urls import reverse_lazy
 
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
+from django.contrib.auth import authenticate, login
+
+from django.contrib.auth.models import User
+
 from django.db import connection
 from collections import namedtuple
 
@@ -46,11 +50,13 @@ def adicionar_livro(request):
             preco = form.cleaned_data['preco']
             quantidade = form.cleaned_data['quantidade']
             funcionario = form.cleaned_data['funcionario']
-
+            
 
    
 
         with connection.cursor() as cursor:
+
+
             cursor.execute("INSERT INTO livro_livro (titulo, autor, editora,"
                            "ano, preco, quantidade, funcionario_id)"
                            "VALUES (%s, %s, %s, %s, %s, %s, %s)",
