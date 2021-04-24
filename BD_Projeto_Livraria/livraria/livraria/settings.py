@@ -138,6 +138,19 @@ STATICFILES_DIRS = [
     '/var/www/static/',
 ]
 
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+
+
+LOGIN_REDIRECT_URL = '/livro/listar'
+
+LOGOUT_REDIRECT_URL = '/accounts/login'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

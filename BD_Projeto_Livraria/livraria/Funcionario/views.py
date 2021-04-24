@@ -3,6 +3,8 @@ from django.urls import reverse_lazy
 
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
+from django.contrib.auth.models import User
+
 from django.db import connection
 from collections import namedtuple
 
@@ -18,18 +20,10 @@ def namedtuplefetchall(cursor):
     return [nt_result(*row) for row in cursor.fetchall()]
 
 
-def listar_funcionarios(request):
-    with connection.cursor() as cursor:
-        # Função SQL que se quer executar (SELECT, INSERT, DELETE, UPDATE, ...)
-        # Parâmetros serão passados nos []
-        cursor.execute("SELECT * FROM funcionario_funcionario", [])
-        # resultado = cursor.fetchall()
+def login_funcionarios(request):
+    return render(request, 'templates/registration/login.html')
 
-        # Função que permite acessar os atributos das tuplas da tabela resultante da query
-        resultado = namedtuplefetchall(cursor)
-    return render(request, 'templates/Funcionario/listar.html',
-                  {'funcionarios': resultado}
-                  )
+
 
 
 def adicionar_funcionario(request):
@@ -43,6 +37,9 @@ def adicionar_funcionario(request):
             email = form.cleaned_data['email']
             senha = form.cleaned_data['senha']
 
+            user = User.objects.create_user(nome, email, senha)   
+            user.save()
+
    
 
         with connection.cursor() as cursor:
@@ -51,7 +48,7 @@ def adicionar_funcionario(request):
                            "VALUES (%s, %s, %s, %s, %s)",
                            [cpf, nome, telefone, email, senha])
             resultado = cursor.fetchall()
-        return redirect('funcionario:listar')
+       
     else:
         form = FuncionarioForm()
     return render(request, 'Funcionario/adicionar.html',
