@@ -37,7 +37,7 @@ def adicionar_funcionario(request):
             email = form.cleaned_data['email']
             senha = form.cleaned_data['senha']
 
-            user = User.objects.create_user(nome, email, senha)   
+            user = User.objects.create_user(email, email, senha)   
             user.save()
 
    
