@@ -1,9 +1,9 @@
 :root {
-  --main-bg-color: #d8cb11;
-  --main-yellow: #F2BE23;
-  --main-light-green: #414141;
+  --main-bg-color: #f7f5d8;
+  --main-yellow: #1f1e1d;
+  --main-light-green: #27a346;
   --main-red: #D94C1A;
-  --main-yellow-hover: #f5b800;
+  --main-yellow-hover: #2912ac;
 }
 
 body {
@@ -24,3 +24,6 @@ body {
 .div35{
   width: 35%;
 }
+
+
+

@@ -20,7 +20,7 @@
 
 <body>
   <header>
-    <nav class="navbar navbar-dark" style="background-color: var(--main-light-green)">
+    <nav class="navbar navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand ms-5" href="http://localhost:8000/">
           <img src="{% static 'livraria/livro.png' %}" alt="" width="30" height="24" class="d-inline-block align-text-top">
@@ -30,19 +30,23 @@
     </nav>
   </header>
 
-  <main>
+  <main >
+    
     <div class="container mt-5">
     <div class="d-flex justify-content-center row">
-      <div class="col">
+      
+        <!-- <div class="col-lg-4 col-lg-offset-2"> -->
         <div class="card shadow" style="width: 18rem;">
-          <div class="card-body" style="height: 283px;">
+          <div class="card-body" style="height: 150px;">
+            <div class="d-flex justify-content-center row">
             <h5 class="card-title">BEM VINDO</h5>
-            <p class="card-text">Entre para gerenciar a livraria</p>
+            
             <a href="accounts/login" class="btn btn-primary">Ir para Login</a>
           </div>
         </div>
       </div>
-    </div>
+    </div> 
+    
       
       
     </div>

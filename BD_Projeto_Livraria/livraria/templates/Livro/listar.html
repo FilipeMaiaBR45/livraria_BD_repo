@@ -19,7 +19,7 @@ Livros
 
   {% if livros %}
     <ul class="list-group div35">
-      {% for livro in livros %}
+     <div class="container ml-2" > {% for livro in livros %}</div>
       <li class="list-group-item">
         <strong>{{livro.id}}: {{ livro.titulo }} - R${{ livro.preco }}</strong>
         <span class="span">
